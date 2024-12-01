@@ -86,9 +86,9 @@ def get_retriever(streaming_callback, parent, reranker, hyde, ragfusion, alpha, 
         reranker_endpoint_name=reranker_endpoint_name,
         parent_document=parent,  # enable parent document
         rag_fusion=ragfusion,
-        rag_fusion_prompt: Any = prompt_repo.get_rag_fusion(),
-        hyde: Any =hyde,
-        hyde_query: [str] =['web_search'],
+        rag_fusion_prompt = prompt_repo.get_rag_fusion(),
+        hyde=hyde,
+        hyde_query=['web_search'],
         query_augmentation_size=3,
         # option for async search
         async_mode=True,
