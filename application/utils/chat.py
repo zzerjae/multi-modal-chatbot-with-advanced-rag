@@ -92,7 +92,7 @@ class chat_utils():
     
     @classmethod
     def get_tokens(cls, chain, prompt):
-        token = chain.llm.get_num_tokens(prompt)
+        token = chain.llm.get_num_tokens_from_messages(prompt)
         print(f'# tokens: {token}')
         return token
 
