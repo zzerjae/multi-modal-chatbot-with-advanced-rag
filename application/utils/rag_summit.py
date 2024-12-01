@@ -1189,7 +1189,7 @@ class OpenSearchLexicalSearchRetriever(BaseRetriever):
     os_client: Any
     index_name: str
     k: int = 3
-    minimum_should_match = 0
+    minimum_should_match: int = 0
     filter = []
 
     def normalize_search_results(self, search_results):
