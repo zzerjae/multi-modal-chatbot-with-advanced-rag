@@ -1188,7 +1188,7 @@ class OpenSearchLexicalSearchRetriever(BaseRetriever):
 
     os_client: Any
     index_name: str
-    k = 3
+    k: int = 3
     minimum_should_match = 0
     filter = []
 
