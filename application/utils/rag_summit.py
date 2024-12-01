@@ -1264,19 +1264,19 @@ class OpenSearchHybridSearchRetriever(BaseRetriever):
     fusion_algorithm: str
     ensemble_weights: List[Any] = [0.51, 0.49]
     verbose: bool = False
-    async_mode = True
-    reranker = False
-    reranker_endpoint_name = ""
-    rag_fusion = False
+    async_mode: bool = True
+    reranker: bool = False
+    reranker_endpoint_name: str = ""
+    rag_fusion: bool = False
     query_augmentation_size: Any
-    rag_fusion_prompt = prompt_repo.get_rag_fusion()
+    rag_fusion_prompt: str = prompt_repo.get_rag_fusion()
     llm_text: Any
     llm_emb: Any
-    hyde = False
+    hyde: bool = False
     hyde_query: Any
-    parent_document = False
-    complex_doc = False
-    hybrid_search_debugger = "None"
+    parent_document: bool = False
+    complex_doc: bool = False
+    hybrid_search_debugger: str = "None"
 
     def update_search_params(self, **kwargs):
 
