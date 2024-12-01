@@ -1258,9 +1258,9 @@ class OpenSearchHybridSearchRetriever(BaseRetriever):
     os_client: Any
     vector_db: Any
     index_name: str
-    k = 3
-    minimum_should_match = 0
-    filter = []
+    k: int = 3
+    minimum_should_match: int = 0
+    filter: List[Any] = []
     fusion_algorithm: str
     ensemble_weights = [0.51, 0.49]
     verbose = False
