@@ -791,11 +791,10 @@ class retriever_utils():
 
         exceed_info = []
         for idx, (context, score) in enumerate(contexts):
+            page_content = context.page_content
             messages = [
                 HumanMessage(query+page_content)
             ]
-
-            page_content = context.page_content
             token_size = llm_text.get_num_tokens_from_messages(messages)
             exceed_flag = False
 
