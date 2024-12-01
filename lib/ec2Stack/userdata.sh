@@ -19,7 +19,7 @@ sudo chown -R ubuntu:ubuntu /home/ubuntu/my_env
 source /home/ubuntu/my_env/bin/activate
 
 # Install dependencies
-cd multi-modal-chatbot-with-advanced-rag/application
+cd v2/multi-modal-chatbot-with-advanced-rag/application
 pip3 install -r requirements.txt
 
 # Create systemd service
@@ -31,7 +31,7 @@ After=network.target
 [Service]
 User=ubuntu
 Environment='AWS_DEFAULT_REGION=us-west-2'
-WorkingDirectory=/home/ubuntu/multi-modal-chatbot-with-advanced-rag/application
+WorkingDirectory=/home/ubuntu/v2/multi-modal-chatbot-with-advanced-rag/application
 ExecStartPre=/bin/bash -c 'sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8501'
 ExecStart=/bin/bash -c 'source /home/ubuntu/my_env/bin/activate && streamlit run streamlit.py --server.port 8501'
 Restart=always

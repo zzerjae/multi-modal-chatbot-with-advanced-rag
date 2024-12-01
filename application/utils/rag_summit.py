@@ -39,6 +39,7 @@ from langchain.embeddings.sagemaker_endpoint import EmbeddingsContentHandler
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain_core.prompts import ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate
 from langchain_anthropic import ChatAnthropic
+from langchain_core.messages import HumanMessage
 
 import threading
 from functools import partial
@@ -790,8 +791,12 @@ class retriever_utils():
 
         exceed_info = []
         for idx, (context, score) in enumerate(contexts):
+            messages = [
+                HumanMessage(query+page_content)
+            ]
+
             page_content = context.page_content
-            token_size = llm_text.get_num_tokens_from_messages(query+page_content)
+            token_size = llm_text.get_num_tokens_from_messages(messages)
             exceed_flag = False
 
             if token_size > cls.token_limit:
@@ -802,8 +807,12 @@ class retriever_utils():
 
                 partial_set, length = [], []
                 for splited_doc in splited_docs:
+                    messages = [
+                        HumanMessage(splited_doc.page_content)
+                    ]
+
                     rerank_queries["inputs"].append({"text": query, "text_pair": splited_doc.page_content})
-                    length.append(llm_text.get_num_tokens_from_messages(splited_doc.page_content))
+                    length.append(llm_text.get_num_tokens_from_messages(messages))
                     partial_set.append(len(rerank_queries["inputs"])-1)
             else:
                 rerank_queries["inputs"].append({"text": query, "text_pair": page_content})

@@ -3,6 +3,7 @@ from utils import print_ww
 from langchain import PromptTemplate
 from IPython.display import display, clear_output
 from langchain.memory import ConversationBufferWindowMemory, ConversationSummaryBufferMemory, ConversationBufferMemory
+from langchain_core.messages import HumanMessage
 
 class chat_utils():
     
@@ -92,7 +93,11 @@ class chat_utils():
     
     @classmethod
     def get_tokens(cls, chain, prompt):
-        token = chain.llm.get_num_tokens_from_messages(prompt)
+        messages = [
+            HumanMessage(prompt)
+        ]
+
+        token = chain.llm.get_num_tokens_from_messages(messages)
         print(f'# tokens: {token}')
         return token
 
