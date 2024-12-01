@@ -1262,8 +1262,8 @@ class OpenSearchHybridSearchRetriever(BaseRetriever):
     minimum_should_match: int = 0
     filter: List[Any] = []
     fusion_algorithm: str
-    ensemble_weights = [0.51, 0.49]
-    verbose = False
+    ensemble_weights: List[Any] = [0.51, 0.49]
+    verbose: bool = False
     async_mode = True
     reranker = False
     reranker_endpoint_name = ""
