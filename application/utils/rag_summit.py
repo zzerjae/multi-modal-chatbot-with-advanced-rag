@@ -1269,7 +1269,7 @@ class OpenSearchHybridSearchRetriever(BaseRetriever):
     reranker_endpoint_name: str = ""
     rag_fusion: bool = False
     query_augmentation_size: Any
-    rag_fusion_prompt: str = prompt_repo.get_rag_fusion()
+    rag_fusion_prompt: Any = prompt_repo.get_rag_fusion()
     llm_text: Any
     llm_emb: Any
     hyde: bool = False
