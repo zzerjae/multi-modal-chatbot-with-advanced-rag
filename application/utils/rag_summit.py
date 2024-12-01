@@ -1256,7 +1256,6 @@ class OpenSearchLexicalSearchRetriever(BaseRetriever):
 class OpenSearchHybridSearchRetriever(BaseRetriever):
 
     os_client: Any
-    vector_db: Any
     index_name: str
     k: int = 3
     minimum_should_match: int = 0
